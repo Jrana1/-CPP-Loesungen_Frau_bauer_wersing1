@@ -13,8 +13,8 @@ int main()
 {
 
     bar_t b1;
-    // foo(&b1);
-    foo(b1);
+    foo(&b1); // call by pointer
+    foo(b1);  // call by c++ Referenz
     display(b1);
     return 0;
 }
