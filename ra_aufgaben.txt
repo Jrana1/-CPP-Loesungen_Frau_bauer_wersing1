@@ -1,4 +1,4 @@
-.text
+
 ##Aufgabe 1
 #addi $8,$0,0
 #addi $8,$8,1
@@ -10,3 +10,15 @@ addi $8,$0,0
 addi $8,$8,1
 addi $8,$0,0xffff
 add $8,$8,$9
+
+#Aufgabe 2
+#addi $8,$0,0
+#addi $9,$0,11
+#addi $10,$0,0x1000
+#addi $11,$0,-1
+#addi $12,$0,-0x8000
+#addi $13,$0,0x8000
+#addi $14,$0,0xffff0000
+#addi $15,$0,0x7fffffff
+#addi $24,$0,5322
+#addi $25,$0,75
