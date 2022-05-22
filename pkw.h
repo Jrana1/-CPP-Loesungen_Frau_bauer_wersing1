@@ -17,9 +17,9 @@ public:
     unsigned int getFgstnr() const;
     unsigned long getLeistung() const;
     const char *getMarke() const;
-    void setFgstnr(unsigned int) const;
-    void setLeistung(unsigned long) const;
-    void getMarke(const char *) const;
+    void setFgstnr(unsigned int);
+    void setLeistung(unsigned long);
+    void getMarke(const char *);
     void display();
 };
 

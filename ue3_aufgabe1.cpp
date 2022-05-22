@@ -1,44 +1,44 @@
+#include "pkw.h"
 #include <iostream>
-using namespace std;
 #include <string.h>
-#include <stdlib.h>
-class PKW
+using namespace std;
+
+PKW::PKW()
+{
+    this->leistung = 100;
+}
+void PKW::display()
 {
 
-private:
-    char *marke;
-    unsigned long fgstnr;
-    unsigned int leistung;
+    cout << "marke ist " << this->marke << ", frgs nr ist " << this->fgstnr << " und leistung ist " << this->leistung << endl;
+}
+PKW::PKW(unsigned int frgsnr, unsigned long lesitung, const char *marke)
+{
 
-public:
-    PKW();
-    PKW(unsigned long fgstnr, unsigned int leistung = 100, const char *marke = "mercedes");
-    ~PKW();
-};
+    this->fgstnr = frgsnr;
+    this->leistung = lesitung;
+    int len = strlen(marke);
+    this->marke = new char[len + 1];
+    strncpy(this->marke, marke, len);
+    this->marke[len] = '\0';
+}
 PKW::~PKW()
 {
     delete[] this->marke;
     cout << "des" << endl;
 }
-PKW::PKW()
-{
-    cout << "default" << endl;
-}
-PKW::PKW(unsigned long fgstnr, unsigned int leistung, const char *marke)
-{
-    this->fgstnr = fgstnr;
-    this->leistung = leistung;
-    // this->marke = new char[15];
-    int len = strlen(marke);
-    this->marke = new char[len + 1];
-    strncpy(this->marke, marke, len);
-    this->marke[len + 1] = '\0';
-    cout << "Pkw der Marke " << this->marke << " mit Fahrgestellnummer " << this->fgstnr << " und leistung " << this->leistung << " erzeugt\n";
-}
 int main()
 {
-    char name[] = "bla";
-    PKW p1;
-    p1 = PKW(23, 41, "jewel");
+    PKW *p2;
+    p2 = new PKW(23, 138, "bmw");
+    p2->display();
+    delete p2;
+    cout << "after" << endl;
+    PKW p1(32, 929, "bm2");
+    PKW p3, p4;
+    p3 = p1;
+
+    p3.display();
+
     return 0;
 }
