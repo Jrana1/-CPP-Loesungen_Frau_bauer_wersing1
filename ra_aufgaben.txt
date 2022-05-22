@@ -1,5 +1,5 @@
 
-##Aufgabe 1
+----Aufgabe 1------
 #addi $8,$0,0
 #addi $8,$8,1
 #ori $8,$0,0xffff
@@ -11,7 +11,7 @@ addi $8,$8,1
 addi $8,$0,0xffff
 add $8,$8,$9
 
-#Aufgabe 2
+-----Aufgabe 2-------
 #addi $8,$0,0
 #addi $9,$0,11
 #addi $10,$0,0x1000
@@ -22,3 +22,41 @@ add $8,$8,$9
 #addi $15,$0,0x7fffffff
 #addi $24,$0,5322
 #addi $25,$0,75
+
+
+
+----#Aufgabe 3----
+#addi $8,$0,0
+#addi $9,$0,-11
+#addi $10,$0,0x1000
+#addi $12,$0,15
+addi $11,$0,-1
+#addi $12,$0,-0x8000
+#addi $13,$0,0x8000
+addi $14,$0,0xffff0000
+#addi $15,$0,0x7fffffff
+#addi $24,$0,5322
+#addi $25,$0,75
+#add $2,$10,$9 #r2=11+32768=32779
+#sub $3,$10,$9 #r3=32768-11=32757
+#nor $4,$9,$0 #not(1011 | 0000)=1100=-11 also not(11|0)=-12 (b-1)'s complement
+#nor $9,$9,$0 #r9=not($9)=-12-->(b-1)'s complement
+#addi $21,$0,1
+#add $4,$9,$10 #r4=4096+(-12)=4084
+#add $4,$9,$10 #r4=4084+1=4085
+#2<<1<=>2*2^1,2<<2<=>2*2^2
+#sll $5,$13 #shift word left logical
+#addi $4,$0,-11
+#sra $3,$4,2 # shift right logical
+#sll $4,$13,5
+#srl $16,$12,5
+#sra $6,$13,5
+#sra $7,$12,5
+#srlv  $18,$13,$9
+#div $18,$24,$25
+#mflo $2
+#mfhi $3
+#addiu $20,$15,1 # if artithmetic overflow occurs addi dosnt work, bcz of trap, but addiu work at any issues
+#addi $20,$15,1
+clo $22,$11
+clo $23,$14
