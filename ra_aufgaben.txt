@@ -60,3 +60,33 @@ addi $14,$0,0xffff0000
 #addi $20,$15,1
 clo $22,$11
 clo $23,$14
+
+
+  Blatt-5
+
+  Aufgabe (a)
+
+  .text
+
+	  addi $4,$0,300  # r4 = 30
+	  addi $5,$0,25  #r5 = 25
+	  addi $2,$5,0   #r2 = r5
+loop:     
+          addi $2,$5,0   #r2 = r5
+          beq $4,$0,end_of_loop #if r4=0=>result has been found
+          beq $5,$0,result_found # if r4=0=>result has been found-
+          slt $8,$4,$5           # if r4 is less then r5 then r8 = 1
+          beq $8,$0,find_b_minus_a #if b>a then find b=b-a
+          bne $8,$0,find_a_minus_b  #if a>b then find a=a-b
+find_b_minus_a:
+          sub $4,$4,$5 # r4=r4-r5
+          j loop       # jump to loop again
+find_a_minus_b:
+          sub $5,$5,$4  #r5=r5-r5
+          j loop   # jump to loop again
+result_found:
+         addi $2,$4,0  #save resutl in r2
+end_of_loop:
+         beq $0,$0,end_of_loop # result already found. programms ends
+          
+         

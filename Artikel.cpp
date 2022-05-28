@@ -12,7 +12,11 @@ private:
 public:
     Airtikel(const char *, long, double);
     Airtikel(const char * = " ");
-    void display();
+    void display(Airtikel const &);
+    ~Airtikel()
+    {
+        cout << "invoced" << endl;
+    }
 };
 Airtikel::Airtikel(const char *name)
 {
@@ -28,14 +32,16 @@ Airtikel::Airtikel(const char *name, long nr, double prs)
     this->nr = nr;
     cout << "konstruktor" << endl;
 }
-void Airtikel::display()
+void Airtikel::display(Airtikel const &ar)
 {
-    cout << this->name << endl;
+    Airtikel tmp = ar;
+    cout << tmp.name << endl;
 }
 int main()
 {
     Airtikel a1("kaffe");
-    a1.display();
+    // a2 = a1;
+    a1.display(a1);
 
     return 0;
 };
