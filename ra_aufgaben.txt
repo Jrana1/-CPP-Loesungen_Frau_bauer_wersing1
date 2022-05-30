@@ -1,4 +1,4 @@
-
+  Blatt-4
 ----Aufgabe 1------
 #addi $8,$0,0
 #addi $8,$8,1
@@ -61,6 +61,18 @@ addi $14,$0,0xffff0000
 clo $22,$11
 clo $23,$14
 
+
+  Aufgabe -4
+
+      .data
+   
+   	 int: .byte 0xa0 #store 8 bits in data section
+  	 short_int: .half 0xb1b0    #store half-word=16 bits in data section
+   	 long_int: .word 0xc3c2c1c0  #store full word=32 bits in data section
+   	 msg:.asciiz "Das Ende\n"    #store string with null terminator in data section
+   
+   
+.text
 
   Blatt-5
 
@@ -132,4 +144,24 @@ return_to_caller:
      jr $ra          #return to caller
       
       
+---find ggT(a,b) using Divition Method
 
+.text
+        # c Programm
+        
+        #int ggT(int a,int b){
+        #   if(b==0) return a;
+        #  return ggT(b,a%b);
+       #   }
+    
+        addi $12,$0,64 #r12 = 45
+        addi $13,$0,16 #r13=16
+ loop:
+        div $12,$13    #divide r12 with r13 to find rest
+        mfhi $3        #get the rest from hi
+        addi $12,$13,0  #set r12=r13
+        addi $13,$3,0    #set r13 to rest found from hi register
+        beq $3,$0,loop_end  #Base Case. Return when r12%r13=0
+        j loop  # jump to loop to continue the process
+ loop_end: # infinity loop
+     beq $0,$0, loop_end 
